@@ -117,4 +117,18 @@ print "\tTotal SMS : " .$COUNTER{'SMS'}." , Total DLR : ".$COUNTER{'DLR'}[$TOTAL
 foreach my $fid ( keys  %FIDHT ){
         print "SMSC ID : $fid :$EOL----------". '-' x length($fid) ."$EOL\tSMS : " . $FIDHT{$fid}[0] . "$EOL\tDLR : " . $FIDHT{$fid}[1] ."$EOL $EOL";
 }
+print "Summary format 2:- $EOL";
+print "================$EOL";
+foreach my $fid ( keys %FIDHT ){
+        print "Message Id :  $fid $EOL" ;
+        print "Destination : $FIDHT{$fid}[3] $EOL" ;
+        print "TimeStamp : $FIDHT{$fid}[4] $EOL" ;
+        print "Sender : $FIDHT{$fid}[2] $EOL" ;
+        if ( defined $FIDHT{$fid}[5] ){
+            print "Status : " . dlr_status($FIDHT{$fid}[5]);
+        }else{
+            print "Status : -" ;
+        }
+        print "$EOL $EOL $EOL" ;
+}
 exit 0 ;
